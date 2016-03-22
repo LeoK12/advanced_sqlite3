@@ -35,7 +35,7 @@ TCC = $(CC) $(CFLAGS) -I. -I${TOP}/src -I${TOP}/ext/rtree -I${TOP}/ext/fts3
 # Define this for the autoconf-based build, so that the code knows it can
 # include the generated config.h
 # 
-TCC += -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DSQLITE_ENABLE_ATOMIC_WRITE
+TCC += -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DSQLITE_ENABLE_ATOMIC_WRITE -DSQLITE_ENABLE_WAL_CHECKPOINT_OPTIMIZATION
 
 
 # Define -DNDEBUG to compile without debugging (i.e., for production usage)

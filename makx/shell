@@ -1,0 +1,10 @@
+rm -f test_org test_ext test.db*
+gcc -o test_ext -g test.c ../sqlite3.c -ldl -lpthread -DSQLITE_ENABLE_WAL_CHECKPOINT_OPTIMIZATION -DNUSE_TRANSACTION
+gcc -o test_org -g test.c ../sqlite3.c -ldl -lpthread -DNSQLITE_ENABLE_WAL_CHECKPOINT_OPTIMIZATION -DNUSE_TRANSACTION
+
+for ((i=0;i<10;i++)); do
+echo test_ext_$i
+./test_ext
+echo test_ort_$i
+./test_org
+done
