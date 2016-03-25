@@ -17,7 +17,6 @@ set testprefix e_wal
 db close
 testvfs oldvfs -iversion 1
 
-
 # EVIDENCE-OF: R-58297-14483 WAL databases can be created, read, and
 # written even if shared memory is unavailable as long as the
 # locking_mode is set to EXCLUSIVE before the first attempted access.
@@ -128,7 +127,6 @@ do_test 2.3.4 {
 } {0 {1 2 3 4}}
 db2 close
 db close
-
 
 # EVIDENCE-OF: R-57239-11845 If NORMAL locking mode is in effect for the
 # first WAL-mode database access, then the shared-memory wal-index is

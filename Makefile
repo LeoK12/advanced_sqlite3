@@ -20,7 +20,7 @@ TOP = .
 # C Compiler and options for use in building executables that
 # will run on the platform that is doing the build.
 #
-BCC = gcc  -g -O2
+BCC = gcc  -g 
 
 # TCC is the C Compile and options for use in building executables that 
 # will run on the target platform.  (BCC and TCC are usually the
@@ -29,13 +29,13 @@ BCC = gcc  -g -O2
 # on the "make" command-line.  Ex:  "make CC=clang CFLAGS=-fsanitize=undefined"
 #
 CC = gcc
-CFLAGS =   -g -O2 -DSQLITE_OS_UNIX=1
+CFLAGS =   -g -DSQLITE_OS_UNIX=1
 TCC = $(CC) $(CFLAGS) -I. -I${TOP}/src -I${TOP}/ext/rtree -I${TOP}/ext/fts3
 
 # Define this for the autoconf-based build, so that the code knows it can
 # include the generated config.h
 # 
-TCC += -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DSQLITE_ENABLE_ATOMIC_WRITE -DSQLITE_ENABLE_WAL_CHECKPOINT_OPTIMIZATION
+TCC += -D_HAVE_SQLITE_CONFIG_H -DBUILD_sqlite -DNSQLITE_ENABLE_ATOMIC_WRITE -DSQLITE_ENABLE_WAL_CHECKPOINT_OPTIMIZATION
 
 
 # Define -DNDEBUG to compile without debugging (i.e., for production usage)
@@ -62,7 +62,7 @@ LIBREADLINE =
 
 # Should the database engine be compiled threadsafe
 #
-TCC += -DSQLITE_THREADSAFE=1
+TCC += -DSQLITE_THREADSAFE=2
 
 # Any target libraries which libsqlite must be linked against
 # 
@@ -74,7 +74,7 @@ TLIBS = -ldl -lpthread
 # default to file, 2 to default to memory, and 3 to force temporary
 # tables to always be in memory.
 #
-TEMP_STORE = -DSQLITE_TEMP_STORE=1
+TEMP_STORE = -DSQLITE_TEMP_STORE=3
 
 # Enable/disable loadable extensions, and other optional features
 # based on configuration. (-DSQLITE_OMIT*, -DSQLITE_ENABLE*).  
